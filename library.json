@@ -1,0 +1,11 @@
+{
+    "name": "DRV8833 Arduino Library",
+    "description": "Arduino library to control a DRV8833 dual motor driver.",
+    "keywords": "DRV8833, Arduino, Motor, Motor Driver",
+    "authors":
+    {
+        "name": "Thomas Hulme",
+        "url": "http://www.thomashulme.co.uk/"
+    },
+    "version": "0.1"
+}
