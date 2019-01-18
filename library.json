@@ -5,7 +5,15 @@
     "authors":
     {
         "name": "Thomas Hulme",
-        "url": "http://www.thomashulme.co.uk/"
+        "url": "http://www.thomashulme.co.uk/",
+        "maintainer": true
     },
-    "version": "0.1"
+    "repository":
+    {
+        "type": "git",
+        "url": "https://github.com/ThomasHulme/DRV8833-Motor-Driver"
+    },
+    "licence": "AGPL-3.0-or-later",
+    "frameworks": "Arduino",
+    "platforms": "ST STM32"
 }
