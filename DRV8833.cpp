@@ -1,4 +1,15 @@
-
+/*================================================================================
+ * 
+ * DRV8833 Motor Driver - Arduino Library
+ * 
+ * Author: Thomas Hulme
+ * Web: thomashulme.co.uk
+ * 
+ * TODO:
+ * Add acceleration rate
+ * 
+ ================================================================================*/
+ 
 #include "Arduino.h"
 #include "DRV8833.h"
 
