@@ -13,6 +13,9 @@ Arduino library to drive an DRV8833 IC.
 * 1.5A per H-Bridge (2A peak)
 * 2.7V - 10.8V Input voltage
 
+## TODO
+* Create interface for moving a stepper motor
+
 ## Dependencies
 * Arduino
 
