@@ -20,6 +20,7 @@ Arduino library to drive an DRV8833 IC.
 [Install library from .ZIP](https://www.arduino.cc/en/guide/libraries#toc4)
 
 ## Example
+### DC Motor
 ```cpp
 #include <Arduino.h>
 #include "DRV8833.h"
