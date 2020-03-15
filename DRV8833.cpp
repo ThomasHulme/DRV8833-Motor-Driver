@@ -5,13 +5,16 @@
  * Author: Thomas Hulme
  * Web: thomashulme.co.uk
  * 
- * TODO:
- * Add acceleration rate
- * 
  ================================================================================*/
  
 #include "Arduino.h"
 #include "DRV8833.h"
+
+/*========================================
+ * 
+ * DC Motor
+ * 
+ ========================================*/
 
 DRV8833_DCMotor::DRV8833_DCMotor(int in1_pin, int in2_pin){
     // Do all this on initialization
@@ -25,40 +28,44 @@ DRV8833_DCMotor::DRV8833_DCMotor(int in1_pin, int in2_pin){
     pinMode(in2_pin_, OUTPUT);
 
     // Stop motor
-    run(BRAKE, 0);
+    brake();
 }
 
-void DRV8833_DCMotor::run(int command, int motor_pwm){
-
-    motor_pwm_ = motor_pwm;
-
-    // If PWM value is higher than the max allowable PWM setting (255 for Uno) then set it as the highest.
-    if(motor_pwm > max_pwm){
-        motor_pwm = max_pwm;
-    }
-
-    switch (command) {
-        case FORWARD:
-            analogWrite(in1_pin_, motor_pwm_);
-            digitalWrite(in2_pin_, LOW);
-            break;
-        case BACKWARD:
-            analogWrite(in2_pin_, motor_pwm_);
-            digitalWrite(in1_pin_, LOW);
-            break;
-        case COAST:
-            // Can PWM in this setting to adjust deceleration, see datasheet
-            digitalWrite(in1_pin_, LOW);
-            digitalWrite(in2_pin_, LOW);
-            break;
-        case BRAKE:
-            // Can PWM in this setting to adjust deceleration, see datasheet
-            digitalWrite(in1_pin_, HIGH);
-            digitalWrite(in2_pin_, HIGH);
-            break;
-        default:
-            // If command does match any of above then stop the motor.
-            run(BRAKE, 0);
-            break;
-    }
+void DRV8833_DCMotor::forward(int speed){
+    analogWrite(in1_pin_, speed);
+    digitalWrite(in2_pin_, LOW);
 }
+
+void DRV8833_DCMotor::backward(int speed){
+    analogWrite(in2_pin_, speed);
+    digitalWrite(in1_pin_, LOW);
+}
+
+void DRV8833_DCMotor::coast(){
+    // Can PWM in this setting to adjust deceleration, see datasheet
+    digitalWrite(in1_pin_, LOW);
+    digitalWrite(in2_pin_, LOW);
+}
+void DRV8833_DCMotor::coast(int speed){
+    // Can PWM in this setting to adjust deceleration, see datasheet
+    analogWrite(in1_pin_, speed);
+    analogWrite(in2_pin_, speed);
+}
+
+void DRV8833_DCMotor::brake(){
+    // Can PWM in this setting to adjust deceleration, see datasheet
+    digitalWrite(in1_pin_, HIGH);
+    digitalWrite(in2_pin_, HIGH);
+}
+void DRV8833_DCMotor::brake(int speed){
+    // Can PWM in this setting to adjust deceleration, see datasheet
+    analogWrite(in1_pin_, speed);
+    analogWrite(in2_pin_, speed);
+}
+
+/*========================================
+ * 
+ * Stepper Motor
+ * 
+ ========================================*/
+
